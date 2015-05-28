@@ -84,6 +84,7 @@
     <Compile Include="Modelo\Crud.cs" />
     <Compile Include="Modelo\CrudPersonas.cs" />
     <Compile Include="Modelo\CrudSoporte.cs" />
+    <Compile Include="Modelo\Facturar.cs" />
     <Compile Include="Modelo\Personas.cs" />
     <Compile Include="Modelo\Soporte.cs" />
     <Compile Include="Modelo\Vehiculos.cs" />

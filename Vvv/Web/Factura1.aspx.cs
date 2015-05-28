@@ -46,6 +46,8 @@ namespace Vvv.Web
         {
             CartDetailsBL tabla = CartDetailsBL.CapturarProducto();
             tabla.compra(TextBox1.Text, TextBox7.Text);
+            CartDetailsBL.CapturarProducto().ListaProductos.Clear();
+            Response.Redirect("Factura1.aspx");
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -85,16 +87,10 @@ namespace Vvv.Web
             j.Ciudad = TextBox6.Text;
 
             h.CrearPerso(j);
-
-            TextBox1.Text = "";
-            TextBox2.Text = "";
-            TextBox3.Text = "";
-            TextBox4.Text = "";
-            TextBox5.Text = "";
-            TextBox6.Text = "";
-            TextBox1.Focus();
+            reset1();
         }
 
+        
         protected void Button3_Click(object sender, EventArgs e)
         {
             Personas k = new Personas();
@@ -107,18 +103,20 @@ namespace Vvv.Web
 
             h.ActualizarPerso(k);
         }
-
-        protected void Button4_Click(object sender, EventArgs e)
+        public void reset1()
         {
+
             TextBox1.Text = "";
             TextBox2.Text = "";
             TextBox3.Text = "";
             TextBox4.Text = "";
             TextBox5.Text = "";
             TextBox6.Text = "";
-            TextBox6.Text = "";
             TextBox1.Focus();
-
+        }
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            reset1();
         }
     }
 }

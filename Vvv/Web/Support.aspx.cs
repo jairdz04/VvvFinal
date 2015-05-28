@@ -72,5 +72,18 @@ namespace Vvv.Web
 
             TextBox1.Focus();
         }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            TextBox5.Text = "";
+            TextBox5.Focus();
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            Facturar b = new Facturar(TextBox5.Text);
+            GridView1.DataSource = b.listado(TextBox5.Text);
+            GridView1.DataBind();
+        }
     }
 }

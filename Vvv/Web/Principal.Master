@@ -28,10 +28,10 @@
 		<div id="menu">
 			<ul>
 				<li class="current_page_item"><a href="Default.aspx" accesskey="1" title="">Home</a></li>
-				<li><a href="Catalog.aspx" accesskey="2" title="">Catalog</a></li>
-				<li><a href="Support.aspx" accesskey="3" title="">Support</a></li>
-				<li><a href="Cart.aspx" accesskey="4" title="">Cart</a></li>
-                <li><a href="Factura1.aspx" accesskey="5" title="">Factura</a></li>
+				<li><a href="Catalog.aspx" accesskey="2" title="">Catalogo</a></li>
+				<li><a href="Support.aspx" accesskey="3" title="">Soporte</a></li>
+				<li><a href="Cart.aspx" accesskey="4" title="">Confirmar</a></li>
+                <li><a href="Factura1.aspx" accesskey="5" title="">Carrito</a></li>
 				<li><a href="Profile.aspx" accesskey="6" title="">Sesion Admin</a></li>
                 
 			</ul>

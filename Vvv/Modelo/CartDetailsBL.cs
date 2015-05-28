@@ -90,6 +90,8 @@ namespace Vvv.Modelo
         {
             ConexionBl a = new ConexionBl();
             string instruccion = "";
+            string instruccion2 = "";
+            
             try
             {
                 a.getA.Close();
@@ -98,11 +100,13 @@ namespace Vvv.Modelo
                 foreach (Carritocs item in ListaProductos)
                 {
                     instruccion = "INSERT INTO dbo.Compras(id_cliente,id_coche,id_factura)   VALUES('" + id_cliente + "','" + item.Mat + "','" + factura + "')";
+                    instruccion2 = "update coches  set  disponible=0 where matricula = '" + item.Mat + "'";
                     a.sen = new SqlCommand(instruccion, a.getA);
+                    a.sen = new SqlCommand(instruccion2, a.getA);
                     a.sen.ExecuteNonQuery();
                 }
                 a.getA.Close();
-
+               
             }
             catch (Exception ex)
             {
@@ -110,7 +114,7 @@ namespace Vvv.Modelo
 
 
             }
-
+            
         }
 
         public void Cargartabla()
