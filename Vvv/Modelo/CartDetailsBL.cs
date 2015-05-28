@@ -10,9 +10,9 @@ namespace Vvv.Modelo
     public class CartDetailsBL
     {
         private DataTable registro;
-     
-       public List<Carritocs> ListaProductos { get; private set; }
-       protected CartDetailsBL()
+
+        public List<Carritocs> ListaProductos { get; private set; }
+        protected CartDetailsBL()
         {
             ListaProductos = new List<Carritocs>();
         }
@@ -30,8 +30,10 @@ namespace Vvv.Modelo
 
 
 
-        public DataTable getRegistro {
-            get {
+        public DataTable getRegistro
+        {
+            get
+            {
 
                 return registro;
             }
@@ -74,17 +76,45 @@ namespace Vvv.Modelo
                         ListaProductos.Remove(item);
 
                     }
-            }
-          
+                }
+
             }
             catch (Exception ex)
             {
-                
+
             }
-            
+
         }
 
-        public void Cargartabla() {
+        public void compra(string id_cliente, string factura)
+        {
+            ConexionBl a = new ConexionBl();
+            string instruccion = "";
+            try
+            {
+                a.getA.Close();
+
+                a.getA.Open();
+                foreach (Carritocs item in ListaProductos)
+                {
+                    instruccion = "INSERT INTO dbo.Compras(id_cliente,id_coche,id_factura)   VALUES('" + id_cliente + "','" + item.Mat + "','" + factura + "')";
+                    a.sen = new SqlCommand(instruccion, a.getA);
+                    a.sen.ExecuteNonQuery();
+                }
+                a.getA.Close();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error", ex);
+
+
+            }
+
+        }
+
+        public void Cargartabla()
+        {
             registro = new DataTable();
             registro.Columns.Add("CODIGO", Type.GetType("System.String"));
             registro.Columns.Add("MATRICULA", Type.GetType("System.String"));
@@ -96,47 +126,48 @@ namespace Vvv.Modelo
             registro.Columns.Add("TOTAL", Type.GetType("System.Double"), "Precio*Cantidad");
             registro.TableName = "carros";
             try
-           {
-               DataRow fila = registro.NewRow();
-          foreach (Carritocs c in ListaProductos)
-	    {
-		     fila = registro.NewRow();
-                   fila[0] =c.Cod;
-                   fila[1] = c.Mat;
-                   fila[2] = c.Mar;
-                   fila[3] = c.Col;
-                   fila[4] = c.Mod;
-                   fila[5] = c.Pre;
-                   fila[6] = c.Cant;
-                   registro.Rows.Add(fila);
-	    }
-               
-           }
-           catch (Exception)
-           {
-             
-               throw;
-           }
-        
-       }
+            {
+                DataRow fila = registro.NewRow();
+                foreach (Carritocs c in ListaProductos)
+                {
+                    fila = registro.NewRow();
+                    fila[0] = c.Cod;
+                    fila[1] = c.Mat;
+                    fila[2] = c.Mar;
+                    fila[3] = c.Col;
+                    fila[4] = c.Mod;
+                    fila[5] = c.Pre;
+                    fila[6] = c.Cant;
+                    registro.Rows.Add(fila);
+                }
 
-        public double total() {
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        public double total()
+        {
             double t = 0;
             try
             {
                 foreach (Carritocs it in ListaProductos)
                 {
-                    t = t + (it.Pre*it.Cant);
+                    t = t + (it.Pre * it.Cant);
                 }
-              
-              
+
+
             }
             catch (Exception ex)
             {
 
             }
-            
-           
+
+
             return t;
         }
 

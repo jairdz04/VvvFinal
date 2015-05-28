@@ -14,8 +14,7 @@ namespace Vvv.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!IsPostBack) {
+if (!IsPostBack) {
                 if (Request.Cookies["dato"] == null)
                 {
                     Response.Redirect("Catalog.aspx");
@@ -65,6 +64,11 @@ namespace Vvv.Web
          //   ClientScript.RegisterStartupScript(typeof(Page), "alert", "<script language=JavaScript>alert('" + (message) + "'); </script>");
 
             
+        }
+
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Catalog.aspx");
         }
 
        

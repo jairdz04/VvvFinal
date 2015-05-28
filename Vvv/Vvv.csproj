@@ -83,7 +83,9 @@
     <Compile Include="Modelo\ConexionBl.cs" />
     <Compile Include="Modelo\Crud.cs" />
     <Compile Include="Modelo\CrudPersonas.cs" />
+    <Compile Include="Modelo\CrudSoporte.cs" />
     <Compile Include="Modelo\Personas.cs" />
+    <Compile Include="Modelo\Soporte.cs" />
     <Compile Include="Modelo\Vehiculos.cs" />
     <Compile Include="Modelo\VehiculosBl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

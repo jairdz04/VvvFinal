@@ -11,15 +11,17 @@ namespace Vvv.Modelo
     {
         private ConexionBl c;
 
-        public Crud() {
+        public Crud()
+        {
 
             c = new ConexionBl();
 
         }
 
-        public void CrearVehiculo(Vehiculos d) {
-            String insert = "insert into Coches (matricula, marca, color, modelo, precio) values ('" + d.Placa + "','" + d.Marca + "','" + d.Color + "', '" + d.Modelo + "', '" + d.precio + "')";
-        ejecutar(insert);
+        public void CrearVehiculo(Vehiculos d)
+        {
+            String insert = "insert into Coches (matricula, marca, color, modelo, precio,disponible) values ('" + d.Placa + "','" + d.Marca + "','" + d.Color + "', '" + d.Modelo + "', '" + d.precio + "',1)";
+            ejecutar(insert);
         }
 
         public Vehiculos BuscarVehi(string id_vehiculos)
@@ -31,7 +33,8 @@ namespace Vvv.Modelo
             c.sen = new SqlCommand(select, c.a);
             c.sl = c.sen.ExecuteReader();
 
-            if (c.sl.Read()) {
+            if (c.sl.Read())
+            {
                 f = new Vehiculos();
                 f.ID_Vehiculo = c.sl[0].ToString();
                 f.Placa = c.sl[1].ToString();
@@ -40,24 +43,29 @@ namespace Vvv.Modelo
                 f.Modelo = c.sl[4].ToString();
                 f.precio = double.Parse(c.sl[5].ToString());
             }
-           c.a.Close();
+            c.a.Close();
 
             return f;
 
         }
 
-        public void ActualizarVehi( Vehiculos g) {
-            String Actualizar = "update Coches  set  matricula='" + g.Placa + "',marca = '" + g.Marca + "', color = '" + g.Color + "' , modelo = '" + g.Modelo + "' , precio = '" + g.Precio + "' where id_Coche = '" + g.ID_Vehiculo + "'";
-        ejecutar(Actualizar);
+        public void ActualizarVehi(Vehiculos g)
+        {
+
+            String Actualizar = "update Coches  set marca = '" + g.Marca + "', color = '" + g.Color + "' , modelo = '" + g.Modelo + "' , precio = '" + g.Precio + "' where  matricula='" + g.Placa + "'";
+            ejecutar(Actualizar);
+
+
         }
 
         public void BorrarVehi(string id_vehiculos)
         {
             String Borrar = "delete from Coches where id_Coche = '" + id_vehiculos + "'";
             ejecutar(Borrar);
-        
+
         }
-        private void ejecutar(String sql) {
+        private void ejecutar(String sql)
+        {
 
 
             try
@@ -70,11 +78,11 @@ namespace Vvv.Modelo
             }
             catch (Exception ex)
             {
-                
+
                 throw;
             }
-           
-}
+
+        }
 
     }
-    }
+}

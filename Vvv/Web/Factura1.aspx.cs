@@ -12,7 +12,6 @@ namespace Vvv.Web
 {
     public partial class Factura1 : System.Web.UI.Page
     {
-
         CrudPersonas h = new CrudPersonas();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -25,7 +24,7 @@ namespace Vvv.Web
                 tabla.Cargartabla();
                 GridView1.DataSource = tabla.getRegistro;
                 GridView1.DataBind();
-               // BindData();
+                // BindData();
                 Label2.Text = tabla.total().ToString();
             }
         }
@@ -38,14 +37,15 @@ namespace Vvv.Web
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int f = GridView1.SelectedIndex;
-           CartDetailsBL.CapturarProducto().EliminarProductos(GridView1.Rows[f].Cells[1].Text);
+            CartDetailsBL.CapturarProducto().EliminarProductos(GridView1.Rows[f].Cells[1].Text);
 
-           Response.Redirect("Factura1.aspx");
+            Response.Redirect("Factura1.aspx");
         }
 
         protected void btnComprar_Click(object sender, EventArgs e)
         {
-
+            CartDetailsBL tabla = CartDetailsBL.CapturarProducto();
+            tabla.compra(TextBox1.Text, TextBox7.Text);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -79,12 +79,12 @@ namespace Vvv.Web
             Personas j = new Personas();
 
             j.tipoDocumentoID = TextBox2.Text;
-            j.documentoID= TextBox3.Text;
+            j.documentoID = TextBox3.Text;
             j.Nombre = TextBox4.Text;
             j.Direccion = TextBox5.Text;
             j.Ciudad = TextBox6.Text;
 
-           h.CrearPerso(j);
+            h.CrearPerso(j);
 
             TextBox1.Text = "";
             TextBox2.Text = "";
@@ -115,6 +115,7 @@ namespace Vvv.Web
             TextBox3.Text = "";
             TextBox4.Text = "";
             TextBox5.Text = "";
+            TextBox6.Text = "";
             TextBox6.Text = "";
             TextBox1.Focus();
 

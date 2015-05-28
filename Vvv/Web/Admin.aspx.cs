@@ -32,16 +32,29 @@ namespace Vvv.Web
                 Label5.Visible = false;
                 Label6.Visible = false;
                 Label7.Visible = false;
+                Label8.Visible = false;
+                Label9.Visible = false;
+                Label10.Visible = false;
+                Label11.Visible = false;
                 TextBox1.Visible = false;
                 TextBox2.Visible = false;
                 TextBox3.Visible = false;
                 TextBox4.Visible = false;
                 TextBox5.Visible = false;
                 TextBox6.Visible = false;
+                TextBox7.Visible = false;
+                TextBox8.Visible = false;
+                TextBox9.Visible = false;
+                TextBox10.Visible = false;
                 Button2.Visible = false;
                 Button3.Visible = false;
                 Button4.Visible = false;
                 Button5.Visible = false;
+                Button6.Visible = false;
+                Button7.Visible = false;
+                Button8.Visible = false;
+                Button9.Visible = false;
+            
             }
 
         }
@@ -91,14 +104,7 @@ namespace Vvv.Web
             j.Precio = double.Parse(TextBox6.Text);
 
             h.CrearVehiculo(j);
-
-            TextBox1.Text = "";
-            TextBox2.Text = "";
-            TextBox3.Text = "";
-            TextBox4.Text = "";
-            TextBox5.Text = "";
-            TextBox6.Text = "";
-            TextBox1.Focus();
+            reset1();
         }
 
         protected void Button4_Click(object sender, EventArgs e)
@@ -128,7 +134,69 @@ namespace Vvv.Web
             TextBox1.Focus();
         }
 
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            CrudSoporte h = new CrudSoporte();
+            string codigo = TextBox7.Text;
+            Soporte v = h.Buscar(codigo);
+
+            if (h != null)
+            {
+                
+                TextBox8.Text = v.placa_carro;
+                TextBox9.Text = v.tipo_revision;
+                TextBox10.Text = v.observacion;
 
 
+
+
+            }
+            else
+            {
+
+
+
+
+            }
+        }
+
+        protected void Button9_Click(object sender, EventArgs e)
+        {
+            reset1();
+        }
+
+        protected void Button8_Click(object sender, EventArgs e)
+        {
+            reset2();
+        }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            CrudSoporte s = new CrudSoporte();
+            s.ActualizarRespuesta(TextBox10.Text, TextBox7.Text);
+            reset2();
+
+        }
+
+        public void reset1()
+        {
+
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+            TextBox5.Text = "";
+            TextBox6.Text = "";
+            TextBox1.Focus();
+        }
+        public void reset2()
+        {
+
+            TextBox7.Text = "";
+            TextBox8.Text = "";
+            TextBox9.Text = "";
+            TextBox10.Text = "";
+            TextBox7.Focus();
+        }
     }
 }
