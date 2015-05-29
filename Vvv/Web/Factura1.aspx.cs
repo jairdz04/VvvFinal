@@ -45,7 +45,7 @@ namespace Vvv.Web
         protected void btnComprar_Click(object sender, EventArgs e)
         {
             CartDetailsBL tabla = CartDetailsBL.CapturarProducto();
-            tabla.compra(TextBox1.Text, TextBox7.Text);
+            tabla.compra(TextBox3.Text, TextBox7.Text);
             CartDetailsBL.CapturarProducto().ListaProductos.Clear();
             Response.Redirect("Factura1.aspx");
         }

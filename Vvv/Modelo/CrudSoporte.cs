@@ -18,10 +18,10 @@ namespace Vvv.Modelo
 
         }
 
-        public void Crear(Soporte d)
+        public void Crear(Soporte h)
         {
-           
-            String insert = "insert into Taller (carro, tipo_Revicion, observacion) values ('" + d.placa_carro + "','" + d.tipo_revision + "', '" + d.observacion + "')";
+
+            String insert = "insert into Taller (carro, tipo_Revicion, observacion) values ('" + h.tipo_revision + "','" + h.placa_carro + "', '" + "" + "')";
             ejecutar(insert);
             
         }
@@ -66,6 +66,7 @@ namespace Vvv.Modelo
 
             try
             {
+               
                 c.a.Open();
                 c.sen = new SqlCommand(sql, c.a);
                 c.sen.ExecuteNonQuery();

@@ -68,7 +68,13 @@ if (!IsPostBack) {
 
         protected void btnRegresar_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        protected void btnRegresar_Click1(object sender, EventArgs e)
+        {
             Response.Redirect("Catalog.aspx");
+
         }
 
        

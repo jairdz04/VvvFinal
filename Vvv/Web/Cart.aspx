@@ -104,7 +104,7 @@
             <td class="auto-style7">
                 &nbsp;</td>
             <td class="auto-style9">
-                <asp:Button ID="btnRegresar" runat="server" Text="Regresar"  style="height: 26px"  />
+                <asp:Button ID="btnRegresar" runat="server" Text="Regresar"  style="height: 26px" OnClick="btnRegresar_Click1"  />
             </td>
         </tr>
     </table>
